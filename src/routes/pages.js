@@ -8,7 +8,7 @@ router.get('/api/book/:id/pages', async(req ,res) => {
     try {
         const book = await Book.findById(req.params.id);
 
-        const pages = await Page.find({ bookId: book._id }).limit(req.query.limit);
+        const pages = await Page.find({ bookId: book._id }).limit(parseInt(req.query.limit));
 
         res.send(pages);
     } catch (error) {
